@@ -16,15 +16,15 @@
 
 - name: Patch gdm3 for automatic login
   ansible.builtin.copy:
-    src: templates/custom.conf
+    src: /etc/ansible/roles/kiosk/templates/custom.conf
     dest: /etc/gdm3/custom.conf
-    remote_src: yes
+
 
 - name: Copy koisk to home dir of user
   ansible.builtin.copy:
-    src: templates/koisk.sh
+    src: /etc/ansible/roles/kiosk/templates/koisk.sh
     dest: /home/user/koisk.sh
-    remote_src: yes
+
 
 
 

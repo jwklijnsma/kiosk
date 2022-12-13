@@ -6,9 +6,7 @@ export DISPLAY=:0
 # Hide the mouse from the display
 unclutter &
 
-# If Chromium crashes (usually due to rebooting), clear the crash #flag so we don't have the annoying warning bar
-sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' /home/kiosk/.config/chromium/Default/Preferences
-sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' /home/kiosk/.config/chromium/Default/Preferences
-
-# Run Chromium and open tabs
-/usr/bin/chromium-browser --window-size=1920,1080 --kiosk --window-position=0,0 http://google.com &
+#!/bin/bash\n\n\
+X_RES=\`xrandr | grep \"*\" | awk -Fx '{ print \$1 }' | sed 's/[^0-9]*//g'\`\n\
+Y_RES=\`xrandr | grep \"*\" | awk -Fx '{ print \$2 }' | awk '{ print \$1 }'\`\n\n\
+/usr/bin/google-chrome --kiosk --start-fullscreen --window-position=0,0 --window-size=\$X_RES,\$Y_RES --no-first-run --incognito --no-default-browser-check --disable-translate https://google.com
