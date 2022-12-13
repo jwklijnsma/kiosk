@@ -34,5 +34,3 @@
 
 - name: reboot the machine
   ansible.builtin.reboot:
-
-

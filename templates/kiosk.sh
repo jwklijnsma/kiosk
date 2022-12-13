@@ -12,4 +12,4 @@ xset s noblank
 xset s off
 
 #!/bin/bash
-/usr/bin/google-chrome --kiosk --start-fullscreen --window-position=0,0 --window-size=1920,1080 --no-first-run --incognito --no-default-browser-check --disable-translate https://www.fotocadeau.nl
+/usr/bin/google-chrome --kiosk --start-fullscreen --password-store=basic --window-position=0,0 --window-size=1920,1080 --no-first-run --incognito --no-default-browser-check --disable-translate https://www.fotocadeau.nl
