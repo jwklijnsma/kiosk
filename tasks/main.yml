@@ -22,8 +22,9 @@
 - name: Copy koisk to home dir of user
   ansible.builtin.copy:
     src: /etc/ansible/roles/kiosk/templates/kiosk.sh
-    dest: /home/user/kiosk.sh
-
+    dest: /etc/kiosk.sh
+    owner: root
+    group: root
 - name: Copy systemd service file to server
   copy:
     src: /etc/ansible/roles/kiosk/templates/kiosk.service
