@@ -1,0 +1,35 @@
+- name: install dependencies
+  package:
+    name: "{{ item }}"
+    state: "present"
+  with_items:
+    - unclutter
+    - xdotool
+  sudo: true
+
+- name: Download my_package
+  get_url:
+    url="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+    dest="/tmp/google-chrome-stable_current_amd64.deb"
+  sudo: true
+
+- name: Install my_package
+  apt: deb="/tmp/google-chrome-stable_current_amd64.deb"
+  sudo: true
+
+- name: Patch gdm3 for automatic login
+  ansible.builtin.copy:
+    src: templates/custom.conf
+    dest: /etc/gdm3/custom.conf
+  sudo: true
+
+- name: Copy koisk to home dir of user
+  ansible.builtin.copy:
+    src: templates/koisk.sh
+    dest: /home/user/koisk.sh
+
+
+
+
+
+
