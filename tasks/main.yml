@@ -22,21 +22,10 @@
 - name: Copy koisk to home dir of user
   ansible.builtin.copy:
     src: /etc/ansible/roles/kiosk/templates/kiosk.sh
-    dest: /etc/kiosk.sh
-    owner: root
-    group: root
-- name: Copy systemd service file to server
-  copy:
-    src: /etc/ansible/roles/kiosk/templates/kiosk.service
-    dest: /etc/systemd/system
-    owner: root
-    group: root
+    dest: /home/"{{ kiosk_user }}"/kiosk.sh
 
-- name: Start kiosk
-  systemd:
-    name: kiosk
-    state: started
-    enabled: yes
+- name: make this script executable
+  command: chmod +x /home/"{{ kiosk_user }}"/kiosk.sh
 
 - name: reboot the machine
   ansible.builtin.reboot:
