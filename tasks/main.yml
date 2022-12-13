@@ -19,11 +19,10 @@
     src: /etc/ansible/roles/kiosk/templates/custom.conf
     dest: /etc/gdm3/custom.conf
 
-
 - name: Copy koisk to home dir of user
   ansible.builtin.copy:
-    src: /etc/ansible/roles/kiosk/templates/koisk.sh
-    dest: /home/user/koisk.sh
+    src: /etc/ansible/roles/kiosk/templates/kiosk.sh
+    dest: /home/user/kiosk.sh
 
 
 
