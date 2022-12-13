@@ -22,10 +22,10 @@
 - name: Copy koisk to home dir of user
   ansible.builtin.copy:
     src: /etc/ansible/roles/kiosk/templates/kiosk.sh
-    dest: /home/"{{ kiosk_user }}"/kiosk.sh
+    dest: /home/user/kiosk.sh
 
 - name: make this script executable
-  command: chmod +x /home/"{{ kiosk_user }}"/kiosk.sh
+  command: chmod +x /home/user/kiosk.sh
 
 - name: reboot the machine
   ansible.builtin.reboot:
