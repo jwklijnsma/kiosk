@@ -1,3 +1,15 @@
+
+- name: Create a login user
+  user:
+      name: user
+      password: '$6$ahgimRtHjDjEHBfr$v6XOajqQp00pWgKGSFKUtYrbNwHzoWPKcrbJKyWT7bTdcR0RkapaOtf.aKy88u6Oe3ES2XpIaVUZJJsdp1Ru90'
+      groups: docker, sudo   # Empty by default.
+      state: present
+      shell: /bin/bash       # Defaults to /bin/bash
+      system: no             # Defaults to no
+      createhome: yes        # Defaults to yes
+      home: /home/user # Defaults to /home/<username>
+
 - name: install dependencies
   package:
     name: "{{ item }}"
