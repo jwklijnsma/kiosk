@@ -21,7 +21,7 @@
 
 - name: Copy koisk to home dir of user
   ansible.builtin.copy:
-    src: /etc/ansible/roles/kiosk/templates/kiosk.sh
+    src: /etc/ansible/roles/kiosk/templates/kiosk.sh.j2
     dest: /home/fotocadeau/kiosk.sh
 
 - name: make this script executable
