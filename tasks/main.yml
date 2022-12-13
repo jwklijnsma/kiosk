@@ -1,5 +1,3 @@
-
-- name: Create a login user
 - name: install dependencies
   package:
     name: "{{ item }}"
