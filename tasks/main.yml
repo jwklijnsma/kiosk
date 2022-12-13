@@ -6,12 +6,12 @@
     - unclutter
     - xdotool
 
-- name: Download my_package
+- name: Download chrome
   get_url:
     url="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
     dest="/tmp/google-chrome-stable_current_amd64.deb"
 
-- name: Install my_package
+- name: Install chrome
   apt: deb="/tmp/google-chrome-stable_current_amd64.deb"
 
 - name: Patch gdm3 for automatic login
@@ -24,8 +24,20 @@
     src: /etc/ansible/roles/kiosk/templates/kiosk.sh
     dest: /home/user/kiosk.sh
 
+- name: Copy systemd service file to server
+  copy:
+    src: /etc/ansible/roles/kiosk/templates/kiosk.service
+    dest: /etc/systemd/system
+    owner: root
+    group: root
 
+- name: Start kiosk
+  systemd:
+    name: kiosk
+    state: started
+    enabled: yes
 
-
+- name: reboot the machine
+  ansible.builtin.reboot:
 
 
