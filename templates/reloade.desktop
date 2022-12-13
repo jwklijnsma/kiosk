@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=reloade
+Exec=/home/fotocadeau/reloade.sh
+X-GNOME-Autostart-enabled=true

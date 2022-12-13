@@ -40,5 +40,18 @@
     src: /etc/ansible/roles/kiosk/templates/kiosk.desktop
     dest: /home/fotocadeau/.config/autostart/kiosk.desktop
 
+- name: Copy koisk to home dir of user
+  ansible.builtin.copy:
+    src: /etc/ansible/roles/kiosk/templates/reloade.sh
+    dest: /home/fotocadeau/reloade.sh
+
+- name: make this script executable
+  command: chmod +x /home/fotocadeau/reloade.sh
+
+- name: Copy koisk to home dir of user
+  ansible.builtin.copy:
+    src: /etc/ansible/roles/kiosk/templates/reloade.desktop
+    dest: /home/fotocadeau/.config/autostart/reloade.desktop
+
 - name: reboot the machine
   ansible.builtin.reboot:
