@@ -18,12 +18,13 @@
   ansible.builtin.copy:
     src: templates/custom.conf
     dest: /etc/gdm3/custom.conf
+    remote_src: yes
 
 - name: Copy koisk to home dir of user
   ansible.builtin.copy:
     src: templates/koisk.sh
     dest: /home/user/koisk.sh
-
+    remote_src: yes
 
 
 
