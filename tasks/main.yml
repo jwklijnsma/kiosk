@@ -1,5 +1,5 @@
 - name: install dependencies
-  package:
+  ansible.builtin.package:
     name: "{{ item }}"
     state: "present"
   with_items:
@@ -7,12 +7,12 @@
     - xdotool
 
 - name: Download chrome
-  get_url:
+  ansible.builtin.get_url:
     url="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
     dest="/tmp/google-chrome-stable_current_amd64.deb"
 
 - name: Install chrome
-  apt: deb="/tmp/google-chrome-stable_current_amd64.deb"
+  ansible.builtin.apt: deb="/tmp/google-chrome-stable_current_amd64.deb"
 
 - name: Patch gdm3 for automatic login
   ansible.builtin.copy:
@@ -26,6 +26,14 @@
 
 - name: make this script executable
   command: chmod +x /home/fotocadeau/kiosk.sh
+
+- name: make dir autostart for fotocadeau
+  ansible.builtin.file:
+    path: /home/fotocadeau/.config/autostart
+    state: directory
+    mode: 0755
+    owner: fotocadeau
+    group: fotocadeau
 
 - name: Copy koisk to home dir of user
   ansible.builtin.copy:
